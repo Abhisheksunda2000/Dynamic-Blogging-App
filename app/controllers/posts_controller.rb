@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
     
     def show
         @posts = Post.find(params[:id])
@@ -6,6 +6,12 @@ class PostController < ApplicationController
     
     def index
         @posts = Post.all
+    end
+
+    def new
+    end
+
+    def create
     end
 
     
