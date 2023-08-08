@@ -1,34 +1,3 @@
 <h1> Edit Post </h1>
-<% if @posts.errors.any? %>
-   <h2> The following errors prevented the post from being edited </h2>
-   <ul>
-   <% @posts.errors.full_messages.each do |msg| %>
-   <li><%= msg %></li>
-   <% end %>
-   </ul>
-<% end %>
-
-
-<%= form_with(model: @posts, local: true) do |f| %>
-     
-<p> 
-  <%= f.label :Title %> <br/>
-  <%= f.text_field :title %>
-</p>
-
-<p> 
-  <%= f.label :Topic %> <br/>
-  <%= f.text_field :topic %>
-</p>
-
-<p> 
-  <%= f.label :Text %> <br/>
-  <%= f.text_area :text %>
-</p>
-
-<p> 
-  <%= f.submit %>
-</p>
-<% end %>
-
-<p> <%= link_to 'Cancel & eturn to Posts listings', posts_path(@posts) %> </p>
+<%= render 'form' %>
+<p> <%= link_to 'Cancel & Return to Posts listings', posts_path(@posts) %> </p>
