@@ -12,6 +12,10 @@ class PostsController < ApplicationController
         @posts = Post.new()
     end
 
+    def edit
+        @posts = Post.find(params[:id])
+    end
+
     def create
          @posts = Post.new(params.require(:posts).permit(:title, :topic, :text))
          if @posts.save
@@ -22,5 +26,15 @@ class PostsController < ApplicationController
          end    
     end
 
-    
+    # if @article.update(params.require(:article).permit(:title, :description))
+
+    def update
+        @posts = Post.find(params[:id])
+        if @posts.update(params.require(:post).permit(:title, :topic, :text))
+            flash[:notice] = "Post was updated successfully"
+            redirect_to @posts
+        else
+            render 'edit'
+        end
+    end      
 end
