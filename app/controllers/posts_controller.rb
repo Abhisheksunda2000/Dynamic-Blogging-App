@@ -36,5 +36,11 @@ class PostsController < ApplicationController
         else
             render 'edit'
         end
-    end      
+    end  
+    
+    def destroy
+        @posts = Post.find(params[:id])
+        @posts.destroy
+        redirect_to post_path, status: :see_other
+    end
 end

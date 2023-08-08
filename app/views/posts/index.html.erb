@@ -10,7 +10,7 @@
               <th>Text</strong></th>
               <th>Published Date & Time</th>
               <th>last_edited Date & Time</th>
-              <th>Actions</th>
+              <th colspan="3">Actions</th>
               </tr>
          </thead>
          
@@ -22,13 +22,12 @@
          <td> <%= p.text %></td>
          <td> <%= p.created_at%></td>
          <td> <%= p.updated_at%></td>
+         <td> <%= link_to 'show', post_path(p) %></td>
+         <td> <%= link_to 'edit', edit_post_path(p) %></td>
+         <td> <%= link_to 'delete', post_path(p), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> </td>
          </tr>
          <% end %>
          </tbody>
-
-
-
-
-
-
 </table>
+
+<p> <%= link_to 'Create new Post', new_post_path(p)%></p>
