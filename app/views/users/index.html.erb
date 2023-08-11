@@ -1,6 +1,10 @@
 <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;  ">
    <h1> SocialApp Users </h1>
 
+   <div class="flickr_pagination ">
+       <%= will_paginate @posts, :container => false %>
+     </div>     
+
    <% @users.each do |user| %>
     <div style="border:1px solid black; margin:2px 0px; width:400px;" >
      <p style="text-align:center;"><%= link_to user.username, user_path(user) %></p>
@@ -21,4 +25,10 @@
         
    <% end %>
 
+   <div class="flickr_pagination ">
+       <%= will_paginate @users, :container => false %>
+     </div>    
+
 </div>
+
+ 
