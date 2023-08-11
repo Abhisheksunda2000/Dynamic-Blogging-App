@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     end
     
     def index
-        @posts = Post.all
+        @posts = Post.paginate(:page => params[:page], :per_page => 2)
     end
 
     def new
@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
     def create
          @posts = Post.new(post_params)
-         @posts.user = User.first
          if @posts.save
            flash[:notice] = "Post was created successfully"
            redirect_to @posts

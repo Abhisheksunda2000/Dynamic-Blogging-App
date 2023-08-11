@@ -20,7 +20,7 @@ class UsersController < ApplicationController
             @user = User.find(params[:id])
             if(@user.update(user_params))
                 flash[:notice] = "You have successfully updated the signed in info"
-                redirect_to posts_path
+                redirect_to user_path
             else 
                 render 'edit'
             end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
             @user = User.new(user_params)
             if(@user.save)
                 flash[:notice] = "Welcome to the SocialApp #{@user.username}, you have successfully signed up"
-                redirect_to posts_path
+                redirect_to @user
             else
                 render :new, status: :unprocessable_entity
             end

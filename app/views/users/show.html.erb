@@ -3,6 +3,10 @@
 
  <%= gravatar_for @user, size: 200 %>
 
+ <p><button> <%= link_to 'Edit your profile', edit_user_path(@user) %></button> </p>
+
+ <p><button> <%= link_to 'Create new Post', new_post_path %></button> </p>
+
  <h3>Posts</h3>
   
   <% @posts.each do |post| %>
@@ -15,11 +19,11 @@
             <p> <strong> Text: </strong><%= truncate(post.text, length: 100) %></p>
             
             <p>
-            <%= link_to "View", post_path(post) %> ||
+            <button><%= link_to "View", post_path(post) %></button> ||
             
-            <%= link_to "Edit", edit_post_path(post) %> ||
+            <button><%= link_to "Edit", edit_post_path(post) %></button> ||
             
-            <%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Are you sure?"} %>
+            <button><%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Are you sure?"} %> </button>
             </p>
           
           
