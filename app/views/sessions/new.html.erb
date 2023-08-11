@@ -1,0 +1,23 @@
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;  ">
+<h1> Log in </h1>
+
+<%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+
+<p> 
+  <%= f.label :Email %> 
+  <%= f.text_field :email %>
+</p>
+
+<p> 
+  <%= f.label :Password %> 
+  <%= f.password_field :password %>
+</p>
+
+<p> 
+  <%= f.submit "Log in"%>
+</p>
+<% end %>
+
+
+<p> <%= link_to '[ Cancel and return to posts listing ]', posts_path %> </p>
+</div>

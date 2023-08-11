@@ -4,6 +4,8 @@
   <p> Share your feelings, and know what other people feels about you. </p>
 
    <div style="display:flex;">
+   <button style="margin:0px 2px;" > <%= link_to 'Log in', login_path(@user) %> </button>
+   <button style="margin:0px 2px;" > <%= link_to 'Logout', logout_path(@user), method: :delete %> </button>
    <button style="margin:0px 2px;" > <%= link_to 'Sign Up', signup_path(@user) %> </button>
    <button style="margin:0px 2px"> <%= link_to 'Check Users', users_path(@users) %> </button>
    <button style="margin:0px 2px"> <%= link_to 'Check latest Posts', posts_path(@posts) %> </button>
