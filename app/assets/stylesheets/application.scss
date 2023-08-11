@@ -14,15 +14,56 @@
  *= require_tree .
  *= require_self
  */
-
+ html,
+ body {
+   height: 100%;
+ }
  .navbar{
     background-color: #fbdc00 !important;
  }
 
  .nav-link{
     color: #000 !important;
+    font-weight:600 !important;
  }
 
+ .form-container{
+   background-color: #ee3425 !important;
+ }
+
+ .logo{
+  color: #000 !important;
+  font-weight:600 !important;
+ }
+
+ #home-container{
+  
+  padding:50px 0px !important;
+  width:100% !important;
+  background-color: #ee3425 !important;
+  color: #fff !important;
+ }
+
+ .btn-primary{
+  background-color: #ebbe00 !important;
+  border:none !important;
+ }
+
+ .search-button{
+  background-color: #ee3425 !important;
+  color:#fff !important;
+  border:none !important;
+ }
+
+ #page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+ 
+#sticky-footer {
+  flex-shrink: none;
+  background-color: #ebbe00 !important;
+}
  /* Pagination styling*/
 .flickr_pagination {
     text-align: center;
