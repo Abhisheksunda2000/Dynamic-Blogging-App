@@ -1,0 +1,24 @@
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;  ">
+   <h1> SocialApp Users </h1>
+
+   <% @users.each do |user| %>
+    <div style="border:1px solid black; margin:2px 0px; width:400px;" >
+     <p style="text-align:center;"><%= link_to user.username, user_path(user) %></p>
+     <p style="text-align:center;"> <%= link_to gravatar_for(user, size: 100), user_path(user) %></p>
+
+     <p style="text-align:center;"><%= pluralize(user.posts.count, "post")%> </p>
+            
+            <button style="text-align:center;">
+            <%= link_to "View Profile", user_path(user) %> 
+            </button>
+          
+            <button style="text-align:center;">
+            <%= link_to "Edit Profile", edit_user_path(user) %> 
+            </button>
+           
+            <p style="text-align:center;"> Joined <%= time_ago_in_words(user.created_at)%> ago</p>
+    </div>
+        
+   <% end %>
+
+</div>

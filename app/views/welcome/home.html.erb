@@ -1,7 +1,11 @@
-<h1> Welcome to the SocialApp </h1>
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;  ">
+  <h1> Welcome to the SocialApp </h1>
 
-<p> Share your feelings, and know what other people feels about you. </p>
+  <p> Share your feelings, and know what other people feels about you. </p>
 
-
-<p> <%= link_to 'Sign Up', signup_path(@user) %> </p>
-<p> <%= link_to 'Check latest Posts', posts_path(@posts) %> </p>
+   <div style="display:flex;">
+   <button style="margin:0px 2px;" > <%= link_to 'Sign Up', signup_path(@user) %> </button>
+   <button style="margin:0px 2px"> <%= link_to 'Check Users', users_path(@users) %> </button>
+   <button style="margin:0px 2px"> <%= link_to 'Check latest Posts', posts_path(@posts) %> </button>
+   </div>
+</div>
