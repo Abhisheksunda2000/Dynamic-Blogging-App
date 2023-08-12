@@ -10,8 +10,10 @@
         <div class="card-body">
           <p class="card-text text-success fw-bold"><%= @posts.topic%></p>
           <p class="card-text"><%= @posts.text %></p>
-          <%= link_to 'Edit', edit_post_path(@posts), class:"btn btn-outline-info" %>
-          <%= link_to 'Delete', post_path(@posts), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+          <% if logged_in? && @posts.user == current_user %>
+           <%= link_to 'Edit', edit_post_path(@posts), class:"btn btn-outline-info" %>
+           <%= link_to 'Delete', post_path(@posts), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           Created <%= time_ago_in_words(@posts.created_at) %> ago, 
