@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
     def create
          @posts = Post.new(post_params)
-         @posts.user = User.first
+         @posts.user = current_user
          if @posts.save
            flash[:notice] = "Post was created successfully"
            redirect_to @posts
