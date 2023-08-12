@@ -1,8 +1,8 @@
-<% if @posts.errors.any? %>
+<% if object.errors.any? %>
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <h4 class="alert-heading">The following errors prevented the article from being saved</h4>
+    <h4 class="alert-heading">The following errors prevented the <%= object_name %> from being saved</h4>
     <ul>
-      <% @posts.errors.full_messages.each do |msg| %>
+      <% object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>

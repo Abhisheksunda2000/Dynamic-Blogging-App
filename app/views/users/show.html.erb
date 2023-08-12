@@ -1,49 +1,60 @@
-<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;  ">
- <h1><%= @user.username %>'s profile</h1>
+<h2 class="text-center mt-4"><%= @user.username %>'s profile</h2> 
 
- <div class="flickr_pagination ">
+<div class="flickr_pagination ">
  <%= will_paginate @posts, :container => false %>
  </div>  
 
- <%= gravatar_for @user, size: 200 %>
-
- <p><button> <%= link_to 'Edit your profile', edit_user_path(@user) %></button> </p>
-
- <p><button> <%= link_to 'Create new Post', new_post_path %></button> </p>
-
- <h3>Posts</h3>
-  
+ 
+    
+<div class="container">
+  <div class="row justify-content-md-center">
+        <p class="col-8  text-center"> <%= gravatar_for @user, size: 80 %> </p>
+        <p class="col-8 text-center"> <%= link_to 'Edit your profile', edit_user_path(@user), class:"btn btn-outline-info" %> </p>
   <% @posts.each do |post| %>
-    <div style="border:1px solid black; margin:2px 0px; width:400px;" >
-     by <%= post.user.username if post.user %>
-          
-        
-            <p><strong> Title: </strong><%= link_to post.title, post_path(post)%></p>
-            <p> <strong> Topic: </strong><%= post.topic %> </p>
-            <p> <strong> Text: </strong><%= truncate(post.text, length: 100) %></p>
-            
-            <p>
-            <button><%= link_to "View", post_path(post) %></button> ||
-            
-            <button><%= link_to "Edit", edit_post_path(post) %></button> ||
-            
-            <button><%= link_to "Delete", post_path(post), method: :delete, data: {confirm: "Are you sure?"} %> </button>
-            </p>
-          
-          
-            <p>
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-body rounded">
+          <div class="card-body">
+            <p class="card-text text-success fw-bold"> <%= link_to post.title, post_path(post)%> </p>
+            <p class="card-text text-success fw-bold"><%= post.topic %></p>
+            <p class="card-text"><%= truncate(post.text, length: 25) %></p>
+            <%= link_to "View", post_path(post), class:"btn btn-outline-success" %>
+            <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-info" %>
+            <%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"btn btn-outline-danger" %>
+          </div>
+          <div class="card-footer text-muted">
             Created <%= time_ago_in_words(post.created_at) %> ago, 
             edited <%= time_ago_in_words(post.updated_at) %> ago
-            </p>
-    </div>
-       
-  <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div> 
+</div>  
 
-  <div class="flickr_pagination ">
-  <%= will_paginate @posts, :container => false %>
-  </div>  
+<div class="flickr_pagination ">
+<%= will_paginate @posts, :container => false %>
+</div> 
 
-</div>
+        
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+            
+          
+          
+           
+   
+  
+
  
 
 

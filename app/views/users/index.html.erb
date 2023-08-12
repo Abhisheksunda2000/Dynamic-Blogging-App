@@ -1,34 +1,50 @@
-<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;  ">
-   <h1> SocialApp Users </h1>
 
-   <div class="flickr_pagination ">
-       <%= will_paginate @posts, :container => false %>
-     </div>     
+<h1 class="text-center mt-4"> Listing All Users </h1>
 
-   <% @users.each do |user| %>
-    <div style="border:1px solid black; margin:2px 0px; width:400px;" >
-     <p style="text-align:center;"><%= link_to user.username, user_path(user) %></p>
-     <p style="text-align:center;"> <%= link_to gravatar_for(user, size: 100), user_path(user) %></p>
-
-     <p style="text-align:center;"><%= pluralize(user.posts.count, "post")%> </p>
-            
-            <button style="text-align:center;">
-            <%= link_to "View Profile", user_path(user) %> 
-            </button>
+<div class="flickr_pagination ">
+      <%= will_paginate @posts, :container => false %>
+  </div>  
+  
+<div class="container">
+  <% @users.each do |user| %> 
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-body rounded">
+          <div class="card-header font-italic">
+            <%= user.username%>
+          </div>
           
-            <button style="text-align:center;">
-            <%= link_to "Edit Profile", edit_user_path(user) %> 
-            </button>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to gravatar_for(user, size: 100), user_path(user) %> </h5>
+            
+            <p class="card-text"><%= pluralize(user.posts.count, "post")%></p>
+          
+            <%= link_to "View Profile", user_path(user), class:"btn btn-outline-success" %> 
            
-            <p style="text-align:center;"> Joined <%= time_ago_in_words(user.created_at)%> ago</p>
+            <%= link_to "Edit Profile", edit_user_path(user), class:"btn btn-outline-info" %> 
+           
+          </div>
+          
+          <div class="card-footer text-muted">
+            <%= time_ago_in_words(user.created_at)%> ago
+          </div>
+        </div>
+      </div>
     </div>
-        
-   <% end %>
-
-   <div class="flickr_pagination ">
-       <%= will_paginate @users, :container => false %>
-     </div>    
-
+  <% end %> 
 </div>
 
+<div class="flickr_pagination ">
+        <%= will_paginate @posts, :container => false %>
+</div>   
+
+  
+
+   
+
+   
+    
+  
+
+   
  
