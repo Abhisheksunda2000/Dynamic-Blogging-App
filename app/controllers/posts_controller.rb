@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :topic, :text)
+        params.require(:post).permit(:title, :topic, :text, category_ids: [])
     end
 
     def require_same_user

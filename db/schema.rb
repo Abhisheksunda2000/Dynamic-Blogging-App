@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_194918) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_135432) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_categories", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "topic"
@@ -19,15 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_194918) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-  end
-
-  create_table "posts_tables", force: :cascade do |t|
-    t.string "title"
-    t.string "topic"
-    t.text "text"
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,10 +1,17 @@
+<h1 class="text-center mt-4">Category: <%= @category.name %></h1>
 
-<h1 class="text-center mt-4"> Listing All Posts </h1>
+<% if logged_in? && current_user.admin? %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit category name", edit_category_path(@category), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
 
-<div class="flickr_pagination ">
-      <%= will_paginate @posts, :container => false %>
-  </div>  
-  
+<h3 class="text-center mt-4">Posts</h3>
+
+<div class="flickr_pagination">
+  <%= will_paginate @posts, :container => false %>
+</div>
+
 <div class="container">
   <% @posts.each do |p| %> 
     <div class="row justify-content-md-center">
@@ -37,10 +44,6 @@
   <% end %> 
 </div>
 
-<div class="flickr_pagination ">
-        <%= will_paginate @posts, :container => false %>
-</div>   
-
-  
-
-        
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @posts, :container => false %>
+</div>

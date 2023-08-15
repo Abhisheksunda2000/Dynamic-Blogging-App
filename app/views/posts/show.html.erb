@@ -6,6 +6,9 @@
       <div class="card text-center shadow mb-5 bg-body rounded">
         <div class="card-header "> by
           <%= @posts.user.username if @posts.user%>
+          <% if @posts.categories.any? %>
+            <div class="mt-2"><%= render @posts.categories %></div> 
+          <% end %>
         </div>
         <div class="card-body">
           <p class="card-text text-success fw-bold"><%= @posts.topic%></p>
