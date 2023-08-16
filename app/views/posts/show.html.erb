@@ -19,6 +19,15 @@
           <% end %>
         </div>
         <div class="card-footer text-muted">
+        <p><%= @posts.likes.count %> <%= (@posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        <% if logged_in? %>
+          <% pre_like = @posts.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+              <%= button_to 'Unlike', post_like_path(@posts, pre_like), method: :delete,  class:"btn btn-outline-danger" %>
+          <% else %>
+              <%= button_to 'Like', post_likes_path(@posts), method: :post, class:"btn btn-outline-success" %>
+          <% end %>
+        <% end %>
           Created <%= time_ago_in_words(@posts.created_at) %> ago, 
           edited <%= time_ago_in_words(@posts.updated_at) %> ago
         </div>
@@ -26,6 +35,9 @@
     </div>
   </div> 
 </div>  
+
+
+
 
 
 

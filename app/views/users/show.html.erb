@@ -26,6 +26,7 @@
             <% end %>
             </div>
           <div class="card-footer text-muted">
+          <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             Created <%= time_ago_in_words(post.created_at) %> ago, 
             edited <%= time_ago_in_words(post.updated_at) %> ago
           </div>

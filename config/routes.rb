@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :posts, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+  resources :posts do
+    resources :likes
+  end
   get 'signup', to: "users#new"
   resources :users, except: [:new]
 
