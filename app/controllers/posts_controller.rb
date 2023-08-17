@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     before_action :require_user, except: [:show, :index]
     before_action :require_same_user, only: [:edit, :update, :destroy]
     def show
+        @comment = @posts.comments.build
     end
     
     def index
@@ -15,17 +16,17 @@ class PostsController < ApplicationController
 
     def edit
     end
-
     def create
-         @posts = Post.new(post_params)
-         @posts.user = current_user
-         if @posts.save
-           flash[:notice] = "Post was created successfully"
-           redirect_to @posts
-         else 
-            render :new, status: :unprocessable_entity
-         end    
-    end
+        @comment = Comment.new(comment_params)
+   
+        respond_to do |format|
+          if @comment.save
+            format.html { redirect_to @comment.post, notice: "Comment was successfully created." }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+          end
+        end
+      end
 
     # if @article.update(params.require(:article).permit(:title, :description))
 

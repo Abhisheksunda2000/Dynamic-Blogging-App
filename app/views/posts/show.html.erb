@@ -36,6 +36,15 @@
   </div> 
 </div>  
 
+<b>Comments</b>
+ <br>
+ <%- @posts.comments.each do |comment|%>
+   <%= comment.body%>
+   <br>
+ <% end %>
+
+<%= render "comments/form", comment: @comment%>
+
 
 
 
