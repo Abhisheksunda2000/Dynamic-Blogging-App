@@ -45,13 +45,16 @@ class PostsController < ApplicationController
     end
 
     def search
-        search_query = params[:query].downcase
-    
-        # Search articles based on title, topic, or user.
-        @posts = Post.where("LOWER(title) LIKE ? OR LOWER(topic) LIKE ? OR LOWER(author) LIKE ?", "%#{search_query}%", "%#{search_query}%", "%#{search_query}%")
-    
-        render json: @posts
-    end
+        search_query = params[:query]&.downcase
+      
+        if search_query.present?
+          @posts = Post.where("LOWER(title) LIKE ? OR LOWER(topic) LIKE ? OR LOWER(author) LIKE ?", "%#{search_query}%", "%#{search_query}%", "%#{search_query}%")
+        else
+          flash[:alert] = "Please provide a valid search query."
+          redirect_to posts_path
+        end
+      end
+      
 
     def recommended_posts
         user = current_user
