@@ -17,4 +17,10 @@ Rails.application.routes.draw do
 
   resources :categories, except: [:destroy]
 
+  resources :payments, only: [:create]
+
+  post 'payments/create' 
+  get 'payments/success' 
+  get 'payments/cancel'
+
 end
