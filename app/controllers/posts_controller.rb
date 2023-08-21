@@ -55,14 +55,25 @@ class PostsController < ApplicationController
         end
       end
       
-
-    def recommended_posts
+      def recommended_posts
         user = current_user
-        interested_topics = user.profile.interested_topics
-        @recommended_posts = Post.where(topic: interested_topics)
-
-        render json: @recommended_posts, status: :ok
-    end
+        
+        # Check if the user is logged in
+        if user.nil?
+          render json: { error: "User not logged in" }, status: :unauthorized
+          return
+        end
+      
+        # Check if the user has an associated profile and interested topics
+        if user.profile&.interested_topics
+          interested_topics = user.profile.interested_topics
+          @recommended_posts = Post.where(topic: interested_topics)
+          render json: @recommended_posts, status: :ok
+        else
+          render json: { error: "User has no profile or interested topics" }, status: :unprocessable_entity
+        end
+      end
+      
     
     def top_posts
         @top_posts = Post.order(post_likes: :desc, post_comments: :desc).limit(5)
@@ -101,8 +112,9 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :topic, :text, category_ids: [])
+        params.require(:post).permit(:title, :topic, :text, :user_id, :published_at, :author, category_ids: [])
     end
+
 
     def require_same_user
         if current_user != @posts.user && current_user.admin?

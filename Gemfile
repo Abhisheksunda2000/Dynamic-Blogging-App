@@ -47,7 +47,7 @@ gem "bootstrap"
 # Use Sass to process CSS
 gem "sassc-rails"
 # payment gem 
-gem 'razorpay'
+gem "razorpay"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
