@@ -4,8 +4,8 @@ class UsersController < ApplicationController
             before_action :require_same_user, only: [:edit, :update, :destroy]
 
             def show  
-             @posts = @user.posts.paginate(:page => params[:page], :per_page => 1)
-           end
+             @posts = @user.posts.paginate(:page => params[:page], :per_page => 1);
+            end
 
            def index
              @users = User.paginate(:page => params[:page], :per_page => 2)
