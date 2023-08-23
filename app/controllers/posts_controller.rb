@@ -20,6 +20,13 @@ class PostsController < ApplicationController
     
     def create
       @posts = Post.new(post_params)
+
+      word_count = @posts.text.split.size
+      reading_speed = 100 # words per minute
+      minutes = (word_count.to_f / reading_speed).ceil
+      @posts.minutes_to_read = minutes
+      render json: @posts
+
       # only logged_in users create post
       @posts.user = current_user
       if @posts.save

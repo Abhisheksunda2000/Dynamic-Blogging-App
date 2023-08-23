@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_032156) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_033218) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -79,6 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_032156) do
     t.integer "user_id"
     t.string "status"
     t.integer "views"
+    t.datetime "published_at"
+    t.integer "minutes_to_read"
   end
 
   create_table "posts_playlists", id: false, force: :cascade do |t|
